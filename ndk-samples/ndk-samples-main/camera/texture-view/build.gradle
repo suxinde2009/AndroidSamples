@@ -1,0 +1,26 @@
+plugins {
+    id "ndksamples.android.application"
+}
+
+android {
+    namespace 'com.sample.textureview'
+    defaultConfig {
+        applicationId "com.sample.textureview"
+        minSdkVersion 24
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_static'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    }
+}
+
+dependencies {
+    implementation libs.androidx.core
+}

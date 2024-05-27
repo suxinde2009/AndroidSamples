@@ -1,0 +1,11 @@
+**/stb
+*.iml
+*.cxx
+.gradle
+/local.properties
+/.idea
+/build
+/captures
+.externalNativeBuild
+common/ndkHelperBin
+play-core-native-sdk

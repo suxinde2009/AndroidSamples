@@ -1,0 +1,46 @@
+plugins {
+    id "ndksamples.android.application"
+    id "ndksamples.android.kotlin"
+}
+
+android {
+    namespace 'com.example.unittest'
+
+    defaultConfig {
+        applicationId "com.example.unittest"
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        prefab true
+    }
+
+    packagingOptions {
+        // Libraries that are wrongly included in the junit-gtest AAR that will
+        // end up in our APK if we don't explicitly exclude them.
+        exclude "**/libadder.so"
+        exclude "**/libapptest.so"
+        exclude "**/libc++_shared.so"
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.junit.gtest
+    implementation libs.googletest
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}

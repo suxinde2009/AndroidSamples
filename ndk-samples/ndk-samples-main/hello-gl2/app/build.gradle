@@ -1,0 +1,23 @@
+plugins {
+    id "ndksamples.android.application"
+}
+
+android {
+    namespace 'com.android.gl2jni'
+
+    defaultConfig {
+        applicationId 'com.android.gl2jni'
+        externalNativeBuild {
+            cmake {
+                // Available arguments are inside ${SDK}/cmake/.../android.toolchain.cmake file
+                arguments '-DANDROID_STL=c++_static'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    }
+}

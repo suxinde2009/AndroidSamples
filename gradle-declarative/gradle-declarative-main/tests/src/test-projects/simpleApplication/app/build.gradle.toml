@@ -1,0 +1,12 @@
+[[plugins]]
+id = "com.android.application"
+
+[android]
+compileSdk = 33
+namespace = "com.example.app"
+
+[android.defaultConfig]
+minSdk = 21
+
+[androidComponents.beforeVariants.release]
+enable = false
